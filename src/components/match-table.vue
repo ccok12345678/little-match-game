@@ -30,9 +30,9 @@ function onMatchItemClick(value: string, position: string) {
   } else {
     if (tempItem === value) {
       console.log('match!')
-      btn?.setAttribute('class', 'hide')
+      btn?.classList.add('hide')
     } else {
-      tempBtn?.setAttribute('class', '')
+      tempBtn?.classList.remove('hide')
       tempBtn = null
     }
     tempItem = undefined
@@ -59,10 +59,6 @@ function onMatchItemClick(value: string, position: string) {
 </template>
 
 <style lang="scss" scoped>
-table {
-  margin-bottom: 0;
-}
-
 td {
   border: var(--border-width) solid var(--table-border-color);
   padding: 0;

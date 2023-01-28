@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useCounterStore } from '@/stores/counter'
+
+const { increment } = useCounterStore()
+
 defineProps<{
   itemValue: string,
 }>()
@@ -7,6 +11,7 @@ const emit = defineEmits(['matchItemClick'])
 
 function onClick(value: string) {
   emit('matchItemClick', value)
+  increment()
 }
 
 </script>
