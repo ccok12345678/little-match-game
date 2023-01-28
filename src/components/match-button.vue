@@ -1,12 +1,19 @@
 <script setup lang="ts">
-
 defineProps<{
-  itemValue: string
+  itemValue: string,
 }>()
+const emit = defineEmits(['matchItemClick'])
+
+
+function onClick(value: string) {
+  emit('matchItemClick', value)
+}
+
 </script>
 
 <template>
-  <button type="button" @click="$emit('matchItemClick',itemValue)">
+  <button type="button" @click="onClick(itemValue)"
+  >
     {{ itemValue }}
   </button>
 

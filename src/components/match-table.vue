@@ -17,21 +17,40 @@ function getRandomItem(): string {
   return matchItems[randomIndex]
 }
 
-function onMatchItemClick(value: string) {
-  console.log(value)
+let tempItem: string | undefined
+let tempBtn: HTMLElement | null
+
+function onMatchItemClick(value: string, position: string) {
+  const btn = document.getElementById(position)
+
+  if (!tempItem) {
+    tempItem = value
+    tempBtn = btn
+    tempBtn?.setAttribute('class', 'hide')
+  } else {
+    if (tempItem === value) {
+      console.log('match!')
+      btn?.setAttribute('class', 'hide')
+    } else {
+      tempBtn?.setAttribute('class', '')
+      tempBtn = null
+    }
+    tempItem = undefined
+  }
 }
 
-const array = new Array(4)
 
 </script>
 
 <template>
   <div>
     <table>
-      <tr v-for="(_, i) in array" :key="i">
-        <td v-for="(_, j) in array" :key="j">
-          <match-button :item-value="getRandomItem()"
-            @match-item-click="onMatchItemClick"></match-button>
+      <tr v-for="(_, i) in new Array(4)" :key="i">
+        <td v-for="(_, j) in new Array(4)" :key="`${i}${j}`">
+          <match-button
+            :id="`${i}${j}`"
+            :item-value="getRandomItem()"
+            @match-item-click="onMatchItemClick($event, `${i}${j}`)" />
         </td>
       </tr>
 
@@ -47,5 +66,9 @@ table {
 td {
   border: var(--border-width) solid var(--table-border-color);
   padding: 0;
+}
+
+.hide {
+  visibility: hidden;
 }
 </style>
