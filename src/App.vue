@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import matchTable from '@/components/match-table.vue'
 
 </script>
 
 <template>
-  <div class="wrap">
-    <button class="button">This is a button</button>
+  <match-table></match-table>
 
-  </div>
 </template>
 
 <style lang="scss">
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 </style>
