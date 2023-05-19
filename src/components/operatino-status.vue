@@ -3,7 +3,7 @@ import { useCounterStore } from '@/stores/counter'
 import { toRefs } from 'vue'
 
 const { count } = toRefs(useCounterStore())
-const countReset = useCounterStore().reset
+const { reset:countReset } = useCounterStore()
 
 function restart() {
   countReset()

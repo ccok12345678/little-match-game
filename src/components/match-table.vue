@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import matchButton from './match-button.vue'
+import { useCounterStore } from '@/stores/counter'
+
+const { matchCountIncrement } = useCounterStore()
 
 const matchItems: string[] = [
   '🦖', '🦥', '🐋', '🍕', '🥯', '🦄', '🐦', '🐝',
@@ -30,6 +33,7 @@ function onMatchItemClick(value: string, position: string) {
   } else {
     if (tempItem === value) {
       console.log('match!')
+      matchCountIncrement()
       btn?.classList.add('hide')
     } else {
       tempBtn?.classList.remove('hide')
