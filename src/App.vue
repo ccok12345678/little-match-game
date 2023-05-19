@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import matchTable from '@/components/match-table.vue'
-import operatinoStatus from '@/components/operatino-status.vue'
+import operationStatus from '@/components/operation-status.vue'
 import finishedView from '@/components/finished-view.vue'
 import { useCounterStore } from './stores/counter';
 import { toRefs } from 'vue';
@@ -14,7 +14,7 @@ const { matchCount } = toRefs(useCounterStore())
   <match-table v-if="matchCount < 8" />
   <finishedView v-else />
 
-  <operatino-status />
+  <operation-status />
 </template>
 
 <style lang="scss">
